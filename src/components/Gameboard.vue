@@ -10,6 +10,7 @@ let playerMessage = ref('');
 let winnerMessage = ref('');
 let isDraw: boolean = false;
 let isGameOver: boolean = false;
+let restartKey = ref(0);
 
 function setPlayerNames(players: any) {
     userOneInput.value = players.userOne;
@@ -87,23 +88,39 @@ function winnerCalculator(){
             isDraw = true;
         }
     }
+
 }
+
+function playAgain(){
+    console.log("play again!!");
+    
+    restartKey.value += 1;
+
+    userOneInput.value = '';
+    userTwoInput.value = '';
+    currentPlayer.value = 1;
+    gameboardSquares.value = ['','','','','','','','',''];
+    playerMessage.value = '';
+    winnerMessage.value = '';
+    isDraw = false;
+    isGameOver = false;
+}
+
 </script>
 
 <!-- ********************************************************************************** -->
 
 <template>
-    <PlayerInput @setPlayerNames="setPlayerNames"></PlayerInput>
-    <div v-if="userOneInput !== '' && userOneInput !== '' " class="gameboardWrapper">
+    <PlayerInput :key="restartKey" @setPlayerNames="setPlayerNames"></PlayerInput>
+    <div :key="restartKey" v-if="userOneInput !== '' && userOneInput !== '' " class="gameboardWrapper">
         <div class="gameboard">
             <div class="gameboardSquare" v-if="!isGameOver" v-for="(square, index) in gameboardSquares" :key="index" @click.once="placeSymbol(index)"><p>{{ gameboardSquares[index] }}</p></div> <!-- List rendering, loops through the array, empty string  -->
-            <p v-if="isGameOver">Play again</p>
+            <p v-if="isGameOver && !isDraw" > {{ winnerMessage }} </p>
+            <p v-if="isDraw === true"> It's a Tie! </p>
         </div>
     </div>
     <p v-if="!isGameOver && !isDraw" > {{ playerMessage }} </p>
-    <p v-if="isGameOver && !isDraw" > {{ winnerMessage }} </p>
-    <p v-if="isDraw === true"> It's a Tie! </p>
-
+    <button v-if="isGameOver" @click="playAgain">Play again</button>    
 </template>
 
 <!-- ********************************************************************************** -->
