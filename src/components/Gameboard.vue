@@ -39,7 +39,54 @@ function placeSymbol(index: number){
 }
 
 function winnerCalculator(){
-    console.log("Winner calculator");
+    if(isGameOver === false) {
+        if(gameboardSquares.value[0] !== '' && gameboardSquares.value[0] === gameboardSquares.value[1] && gameboardSquares.value[1] === gameboardSquares.value[2]){         
+            winnerMessage.value = gameboardSquares.value[0] === 'X' ? userOneInput.value + " won!" : userTwoInput.value + " won!" ;
+            isGameOver = true;
+        }
+        else if(gameboardSquares.value[3] !== '' && gameboardSquares.value[3] === gameboardSquares.value[4] && gameboardSquares.value[4] === gameboardSquares.value[5]){
+            winnerMessage.value = gameboardSquares.value[3] === 'X' ? userOneInput.value + " won!" : userTwoInput.value + " won!" ;
+            isGameOver = true;
+        }
+        else if(gameboardSquares.value[6] !== '' && gameboardSquares.value[6] === gameboardSquares.value[7] && gameboardSquares.value[7] === gameboardSquares.value[8]){
+            winnerMessage.value = gameboardSquares.value[6] === 'X' ? userOneInput.value + " won!" : userTwoInput.value + " won!" ;
+            isGameOver = true;
+        }
+        else if(gameboardSquares.value[0] !== '' && gameboardSquares.value[0] === gameboardSquares.value[3] && gameboardSquares.value[3] === gameboardSquares.value[6]){
+            winnerMessage.value = gameboardSquares.value[0] === 'X' ? userOneInput.value + " won!" : userTwoInput.value + " won!" ;
+            isGameOver = true;
+        }
+        else if(gameboardSquares.value[1] !== '' && gameboardSquares.value[1] === gameboardSquares.value[4] && gameboardSquares.value[4] === gameboardSquares.value[7]){
+            winnerMessage.value = gameboardSquares.value[1] === 'X' ? userOneInput.value + " won!" : userTwoInput.value + " won!" ;
+            isGameOver = true;
+        }
+        else if(gameboardSquares.value[2] !== '' && gameboardSquares.value[2] === gameboardSquares.value[5] && gameboardSquares.value[5] === gameboardSquares.value[8]){
+            winnerMessage.value = gameboardSquares.value[2] === 'X' ? userOneInput.value + " won!" : userTwoInput.value + " won!" ;
+            isGameOver = true;
+        }
+        else if(gameboardSquares.value[0] !== '' && gameboardSquares.value[0] === gameboardSquares.value[4] && gameboardSquares.value[4] === gameboardSquares.value[8]){
+            winnerMessage.value = gameboardSquares.value[0] === 'X' ? userOneInput.value + " won!" : userTwoInput.value + " won!" ;
+            isGameOver = true;
+        }
+        else if(gameboardSquares.value[2] !== '' && gameboardSquares.value[2] === gameboardSquares.value[4] && gameboardSquares.value[4] === gameboardSquares.value[6]){
+            // winnerMessage.value = "Player with symbol " + gameboardSquares.value[2] + " won!";
+            winnerMessage.value = gameboardSquares.value[2] === 'X' ? userOneInput.value + " won!" : userTwoInput.value + " won!" ;
+            isGameOver = true;
+        } 
+        else if(gameboardSquares.value[0] !== '' 
+        && gameboardSquares.value[1] !== '' 
+        && gameboardSquares.value[2] !== '' 
+        && gameboardSquares.value[3] !== '' 
+        && gameboardSquares.value[4] !== '' 
+        && gameboardSquares.value[5] !== '' 
+        && gameboardSquares.value[6] !== '' 
+        && gameboardSquares.value[7] !== '' 
+        && gameboardSquares.value[8] !== ''){
+            console.log("TIE!");
+            isGameOver = true;
+            isDraw = true;
+        }
+    }
 }
 </script>
 
@@ -47,7 +94,7 @@ function winnerCalculator(){
 
 <template>
     <PlayerInput @setPlayerNames="setPlayerNames"></PlayerInput>
-    <div class="gameboardWrapper">
+    <div v-if="userOneInput !== '' && userOneInput !== '' " class="gameboardWrapper">
         <div class="gameboard">
             <div class="gameboardSquare" v-if="!isGameOver" v-for="(square, index) in gameboardSquares" :key="index" @click.once="placeSymbol(index)"><p>{{ gameboardSquares[index] }}</p></div> <!-- List rendering, loops through the array, empty string  -->
             <p v-if="isGameOver">Play again</p>
