@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'; //imports ref function from vue
-
+import { ref } from 'vue';
 const userOneInput = ref("");  
 const userTwoInput = ref(""); 
-const isSubmitted = ref(false); //to keep track if inputs are submitted or not
-
+const isSubmitted = ref(false); 
 const emits = defineEmits(['setPlayerNames']);
 
-//if inputs are not empty, set isSubmitted value to true
 function handleSubmit() {
     if(userOneInput.value !== '' && userTwoInput.value !== ''){
         isSubmitted.value = true;
@@ -17,27 +14,20 @@ function handleSubmit() {
         });
     }
 };
-
 </script>
 
-<!-- ********************************************************************************** -->
-
 <template>
-
-    <div class="playerInput" v-if="!isSubmitted"> <!-- if inputs are not submitted yet, show input fields-->
+    <div class="playerInput" v-if="!isSubmitted">
         <p>ADD PLAYER NAMES</p>
         <input type="text" placeholder="Player 1" v-model="userOneInput"/>
         <input type="text" placeholder="Player 2" v-model="userTwoInput"/>
         <button @click="handleSubmit">Save</button>
     </div>
 
-    <div class="playerInputSaved" v-else> <!-- else: inputs are submitted, print the value (name) and corresponding symbols-->
+    <div class="playerInputSaved" v-else>
         <p>{{ userOneInput }} [X] vs. {{ userTwoInput }} [O]</p>
     </div>
-
 </template>
-
-<!-- ********************************************************************************** -->
 
 <style scoped>
 .playerInput {
@@ -45,7 +35,6 @@ function handleSubmit() {
     flex-direction: column;
     gap: 5px;
 }
-
 input {
     padding: 5px 10px;
     font-size: 1rem;
@@ -61,17 +50,14 @@ input {
     border-radius: 5px;
     border: none;
 }
-
 .playerInput button:hover {
     background-color: rgb(197, 21, 174);
     color: aliceblue;
     border: none;
 }
-
 p {
     font-size: 1.2rem;
     color: rgb(68, 68, 145);
     font-weight: 500;
 }
-
 </style>
