@@ -6,11 +6,11 @@ Denna mall innehåller ett tomt vue-projekt baserat på typescript. Er uppgift �
 
 ## Betyg G
 
-- Kunna ange spelarnamn för X respektive O
-- Kunna spela ett spel och få en vinnare/oavgjort
-- Inte kunna göra fler drag efter spelet är slut
-- Kunna starta ett nytt spel
-- Använda minst en komponent
+- Kunna ange spelarnamn för X respektive O ✅
+- Kunna spela ett spel och få en vinnare/oavgjort ✅
+- Inte kunna göra fler drag efter spelet är slut ✅
+- Kunna starta ett nytt spel ✅
+- Använda minst en komponent ✅
 
 ## Betyg VG
 
