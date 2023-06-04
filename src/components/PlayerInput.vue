@@ -5,10 +5,16 @@ const userOneInput = ref("");
 const userTwoInput = ref(""); 
 const isSubmitted = ref(false); //to keep track if inputs are submitted or not
 
+const emits = defineEmits(['setPlayerNames']);
+
 //if inputs are not empty, set isSubmitted value to true
 function handleSubmit() {
     if(userOneInput.value !== '' && userTwoInput.value !== ''){
         isSubmitted.value = true;
+        emits('setPlayerNames', {
+            userOne: userOneInput.value,
+            userTwo: userTwoInput.value
+        });
     }
 };
 
