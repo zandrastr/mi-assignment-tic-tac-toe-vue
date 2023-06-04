@@ -21,7 +21,7 @@ function setPlayerNames(players: any) {
 }
 
 function addPlayerMessage(){
-    currentPlayer.value === 1 ? playerMessage.value = "Its your turn " + userOneInput.value + "!" : playerMessage.value = "Its your turn " + userTwoInput.value + "!";
+    currentPlayer.value === 1 ? playerMessage.value = "It's your turn " + userOneInput.value + "!" : playerMessage.value = "It's your turn " + userTwoInput.value + "!";
 }
 
 function placeSymbol(index: number){
@@ -112,15 +112,20 @@ function playAgain(){
 
 <template>
     <PlayerInput :key="restartKey" @setPlayerNames="setPlayerNames"></PlayerInput>
+
     <div :key="restartKey" v-if="userOneInput !== '' && userOneInput !== '' " class="gameboardWrapper">
-        <div class="gameboard">
+        <div class="gameboard" v-if="!isGameOver">
             <div class="gameboardSquare" v-if="!isGameOver" v-for="(square, index) in gameboardSquares" :key="index" @click.once="placeSymbol(index)"><p>{{ gameboardSquares[index] }}</p></div> <!-- List rendering, loops through the array, empty string  -->
-            <p v-if="isGameOver && !isDraw" > {{ winnerMessage }} </p>
-            <p v-if="isDraw === true"> It's a Tie! </p>
         </div>
+        <p class="gameMsg" v-if="isGameOver && !isDraw" > {{ winnerMessage }} </p>
+        <p class="gameMsg" v-if="isDraw === true"> It's a Tie! </p>
     </div>
-    <p v-if="!isGameOver && !isDraw" > {{ playerMessage }} </p>
-    <button v-if="isGameOver" @click="playAgain">Play again</button>    
+
+
+    <p class="playerMsg" v-if="!isGameOver && !isDraw" > {{ playerMessage }} </p>
+    
+    <button class="gameOverBtn" v-if="isGameOver" @click="playAgain">Play again</button>    
+
 </template>
 
 <!-- ********************************************************************************** -->
@@ -128,6 +133,7 @@ function playAgain(){
 <style scoped>
 .gameboardWrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 .gameboard {
@@ -149,4 +155,34 @@ function playAgain(){
     font-weight: bold;
     font-size: 3rem;
 }
+
+.playerMsg {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(197, 21, 174);
+}
+.gameMsg {
+    font-size: 3rem;
+    font-weight: bold;
+    color: rgb(197, 21, 174);
+}
+
+.gameOverBtn {
+    padding: 7px;
+    width: 40%;
+    align-self: center;
+    text-align: center;
+    margin: 10px;
+    background-color: rgb(26, 26, 102);
+    color: aliceblue;
+    border-radius: 5px;
+    border: none;
+}
+
+.gameOverBtn:hover {
+    background-color: rgb(197, 21, 174);
+    color: aliceblue;
+    border: none;
+}
+
 </style>
