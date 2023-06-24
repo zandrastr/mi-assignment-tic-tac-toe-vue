@@ -1,21 +1,6 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/XOvGiyhD)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11241786&assignment_repo_type=AssignmentRepo)
-# Inlämningsuppgift Tre-i-rad
+# Tic-Tac-Toe game in Vue 💻🚀
 
-Denna mall innehåller ett tomt vue-projekt baserat på typescript. Er uppgift är att skapa spelet tre-i-rad med hjälp av denna mall. Eftersom ni inte har någonting att utgå ifrån så har ni fria händer att skapa just er unika lösning.
+For a school assignment, I developed a basic tic-tac-toe game.  
+The main objective of this project was to gain a fundamental understanding of Vue.
 
-## Betyg G
-
-- Kunna ange spelarnamn för X respektive O ✅
-- Kunna spela ett spel och få en vinnare/oavgjort ✅
-- Inte kunna göra fler drag efter spelet är slut ✅
-- Kunna starta ett nytt spel ✅
-- Använda minst en komponent ✅
-
-## Betyg VG
-
-- Använda minst tre komponenter för er lösning
-- Spara poänghistorik för spelarna
-- Kunna visa poängstatistiken
-- Kunna stänga webbläsaren och komma tillbaka där spelet avbröts
-- Kunna nollställa statistik och börja om med nya spelare
+![2023-06-24 (18)](https://github.com/zandrastr/mi-assignment-tic-tac-toe-vue/assets/95537845/f7678e23-3167-4aca-a0b7-5d81b28d83dc)
